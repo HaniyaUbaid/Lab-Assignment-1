@@ -25,6 +25,12 @@ return year;}
 public Artist getArtist(){
 return artist;}
 
+public Artwork shallowCopy(){
+return new Artwork(this.title,this.year,this.artist);}
+
+public Artwork deepCopy(){
+return new Artwork(this.title,this.year,new Artist(this.artist.getName()));}
+
 public String toString(){
 return String.format("%s %d %s",title,year,artist);}
 
@@ -36,5 +42,12 @@ this.year=year;}
 
 public void setTitle(String title){
 this.title=title;}
+
+public boolean equals(Object o){
+
+Artwork temp=(Artwork)o;
+return temp.title.equals(this.title)&&temp.year==this.year&&temp.artist.getName().equals(this.artist.getName());}
+
+
 
 }
